@@ -1,0 +1,182 @@
+{
+  "name": "vscode-templates-react",
+  "displayName": "vscode-templates-react",
+  "description": "templates for react development",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "react-tools.react-component.component",
+        "title": "React: Component"
+      },
+      {
+        "command": "react-tools.react-component.component-scss",
+        "title": "React: Component + SCSS"
+      },
+      {
+        "command": "react-tools.newReactListReducerContext",
+        "title": "React: List Reducer Context"
+      },
+      {
+        "command": "react-tools.newReactStateContext",
+        "title": "React: State Context"
+      },
+      {
+        "command": "react-tools.newNextJsPage",
+        "title": "Pages Router: Page"
+      },
+      {
+        "command": "react-tools.newNextJsApi",
+        "title": "Page Router: API Route"
+      },
+      {
+        "command": "react-tools.app-router.page",
+        "title": "App Router: Route Module"
+      },
+      {
+        "command": "react-tools.app-router.route",
+        "title": "App Router: API"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "react-tools.templates",
+        "label": "New Template..."
+      }
+    ],
+    "menus": {
+      "react-tools.templates": [
+        {
+          "command": "react-tools.react-component.component",
+          "group": "1_react@1"
+        },
+        {
+          "command": "react-tools.react-component.component-scss",
+          "group": "1_react@2"
+        },
+        {
+          "command": "react-tools.newReactListReducerContext",
+          "group": "1_react@3"
+        },
+        {
+          "command": "react-tools.newReactStateContext",
+          "group": "1_react@4"
+        },
+        {
+          "command": "react-tools.newNextJsPage",
+          "group": "2_nextjsPageRouter@1",
+          "when": "config.react-tools.disablePageRouter != true"
+        },
+        {
+          "command": "react-tools.newNextJsApi",
+          "group": "2_nextjsPageRouter@2",
+          "when": "config.react-tools.disablePageRouter != true"
+        },
+        {
+          "command": "react-tools.app-router.page",
+          "group": "3_nextjsAppRouter@1",
+          "when": "config.react-tools.disableAppRouter != true"
+        },
+        {
+          "command": "react-tools.app-router.route",
+          "group": "3_nextjsAppRouter@2",
+          "when": "config.react-tools-disableAppRouter != true"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "react-tools.templates",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "react-tools.react-component.component",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.react-component.component-scss",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.newReactListReducerContext",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.newReactStateContext",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.newNextJsPage",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.newNextJsApi",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.app-router.page",
+          "when": "false"
+        },
+        {
+          "command": "react-tools.app-router.route",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "React Tools Settings",
+      "properties": {
+        "react-tools.disableAppRouter": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable NextJS App Router templates"
+        },
+        "react-tools.disablePageRouter": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable NextJS Page Router templates"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "update": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.react-tools); (code --install-extension react-tools-0.0.1.vsix)",
+    "update:first": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.react-tools); (code --install-extension react-tools-0.0.1.vsix)"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.78.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
