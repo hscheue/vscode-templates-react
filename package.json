@@ -4,6 +4,10 @@
   "description": "templates for react development",
   "version": "0.0.1",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hscheuerle/vscode-templates-react.git"
+  },
   "engines": {
     "vscode": "^1.78.0"
   },
