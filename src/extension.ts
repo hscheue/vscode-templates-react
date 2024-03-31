@@ -11,22 +11,28 @@ export function activate(context: ExtensionContext) {
 
   context.subscriptions.push(
     commands.registerCommand(
-      "react-tools.newReactListReducerContext",
+      "vscode-templates-react.newReactListReducerContext",
       newReactListReducerContext
     )
   );
   context.subscriptions.push(
     commands.registerCommand(
-      "react-tools.newReactStateContext",
+      "vscode-templates-react.newReactStateContext",
       newReactStateContext
     )
   );
   // pages
   context.subscriptions.push(
-    commands.registerCommand("react-tools.newNextJsPage", newNextJsPage)
+    commands.registerCommand(
+      "vscode-templates-react.newNextJsPage",
+      newNextJsPage
+    )
   );
   context.subscriptions.push(
-    commands.registerCommand("react-tools.newNextJsApi", newNextJsApi)
+    commands.registerCommand(
+      "vscode-templates-react.newNextJsApi",
+      newNextJsApi
+    )
   );
   extensionAppRouter(context);
 }

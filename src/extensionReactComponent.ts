@@ -18,11 +18,11 @@ import {
 export default function extensionReactComponent(context: ExtensionContext) {
   context.subscriptions.push(
     commands.registerCommand(
-      "react-tools.react-component.component",
+      "vscode-templates-react.react-component.component",
       reactComponent("component")
     ),
     commands.registerCommand(
-      "react-tools.react-component.component-scss",
+      "vscode-templates-react.react-component.component-scss",
       reactComponent("component-scss")
     )
   );

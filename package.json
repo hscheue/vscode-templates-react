@@ -15,121 +15,121 @@
   "contributes": {
     "commands": [
       {
-        "command": "react-tools.react-component.component",
+        "command": "vscode-templates-react.react-component.component",
         "title": "React: Component"
       },
       {
-        "command": "react-tools.react-component.component-scss",
+        "command": "vscode-templates-react.react-component.component-scss",
         "title": "React: Component + SCSS"
       },
       {
-        "command": "react-tools.newReactListReducerContext",
+        "command": "vscode-templates-react.newReactListReducerContext",
         "title": "React: List Reducer Context"
       },
       {
-        "command": "react-tools.newReactStateContext",
+        "command": "vscode-templates-react.newReactStateContext",
         "title": "React: State Context"
       },
       {
-        "command": "react-tools.newNextJsPage",
+        "command": "vscode-templates-react.newNextJsPage",
         "title": "Pages Router: Page"
       },
       {
-        "command": "react-tools.newNextJsApi",
+        "command": "vscode-templates-react.newNextJsApi",
         "title": "Page Router: API Route"
       },
       {
-        "command": "react-tools.app-router.page",
+        "command": "vscode-templates-react.app-router.page",
         "title": "App Router: Route Module"
       },
       {
-        "command": "react-tools.app-router.route",
+        "command": "vscode-templates-react.app-router.route",
         "title": "App Router: API"
       }
     ],
     "submenus": [
       {
-        "id": "react-tools.templates",
+        "id": "vscode-templates-react.templates",
         "label": "New Template..."
       }
     ],
     "menus": {
-      "react-tools.templates": [
+      "vscode-templates-react.templates": [
         {
-          "command": "react-tools.react-component.component",
+          "command": "vscode-templates-react.react-component.component",
           "group": "1_react@1"
         },
         {
-          "command": "react-tools.react-component.component-scss",
+          "command": "vscode-templates-react.react-component.component-scss",
           "group": "1_react@2"
         },
         {
-          "command": "react-tools.newReactListReducerContext",
+          "command": "vscode-templates-react.newReactListReducerContext",
           "group": "1_react@3"
         },
         {
-          "command": "react-tools.newReactStateContext",
+          "command": "vscode-templates-react.newReactStateContext",
           "group": "1_react@4"
         },
         {
-          "command": "react-tools.newNextJsPage",
+          "command": "vscode-templates-react.newNextJsPage",
           "group": "2_nextjsPageRouter@1",
-          "when": "config.react-tools.disablePageRouter != true"
+          "when": "config.vscode-templates-react.disablePageRouter != true"
         },
         {
-          "command": "react-tools.newNextJsApi",
+          "command": "vscode-templates-react.newNextJsApi",
           "group": "2_nextjsPageRouter@2",
-          "when": "config.react-tools.disablePageRouter != true"
+          "when": "config.vscode-templates-react.disablePageRouter != true"
         },
         {
-          "command": "react-tools.app-router.page",
+          "command": "vscode-templates-react.app-router.page",
           "group": "3_nextjsAppRouter@1",
-          "when": "config.react-tools.disableAppRouter != true"
+          "when": "config.vscode-templates-react.disableAppRouter != true"
         },
         {
-          "command": "react-tools.app-router.route",
+          "command": "vscode-templates-react.app-router.route",
           "group": "3_nextjsAppRouter@2",
-          "when": "config.react-tools-disableAppRouter != true"
+          "when": "config.vscode-templates-react-disableAppRouter != true"
         }
       ],
       "explorer/context": [
         {
-          "submenu": "react-tools.templates",
+          "submenu": "vscode-templates-react.templates",
           "group": "navigation",
           "when": "explorerResourceIsFolder"
         }
       ],
       "commandPalette": [
         {
-          "command": "react-tools.react-component.component",
+          "command": "vscode-templates-react.react-component.component",
           "when": "false"
         },
         {
-          "command": "react-tools.react-component.component-scss",
+          "command": "vscode-templates-react.react-component.component-scss",
           "when": "false"
         },
         {
-          "command": "react-tools.newReactListReducerContext",
+          "command": "vscode-templates-react.newReactListReducerContext",
           "when": "false"
         },
         {
-          "command": "react-tools.newReactStateContext",
+          "command": "vscode-templates-react.newReactStateContext",
           "when": "false"
         },
         {
-          "command": "react-tools.newNextJsPage",
+          "command": "vscode-templates-react.newNextJsPage",
           "when": "false"
         },
         {
-          "command": "react-tools.newNextJsApi",
+          "command": "vscode-templates-react.newNextJsApi",
           "when": "false"
         },
         {
-          "command": "react-tools.app-router.page",
+          "command": "vscode-templates-react.app-router.page",
           "when": "false"
         },
         {
-          "command": "react-tools.app-router.route",
+          "command": "vscode-templates-react.app-router.route",
           "when": "false"
         }
       ]
@@ -137,12 +137,12 @@
     "configuration": {
       "title": "React Tools Settings",
       "properties": {
-        "react-tools.disableAppRouter": {
+        "vscode-templates-react.disableAppRouter": {
           "type": "boolean",
           "default": false,
           "description": "Disable NextJS App Router templates"
         },
-        "react-tools.disablePageRouter": {
+        "vscode-templates-react.disablePageRouter": {
           "type": "boolean",
           "default": false,
           "description": "Disable NextJS Page Router templates"
@@ -160,8 +160,8 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "update": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.react-tools); (code --install-extension react-tools-0.0.1.vsix)",
-    "update:first": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.react-tools); (code --install-extension react-tools-0.0.1.vsix)"
+    "update": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.vscode-templates-react); (code --install-extension vscode-templates-react-0.0.1.vsix)",
+    "update:first": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.vscode-templates-react); (code --install-extension vscode-templates-react-0.0.1.vsix)"
   },
   "devDependencies": {
     "@types/vscode": "^1.78.0",

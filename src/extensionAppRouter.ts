@@ -17,8 +17,14 @@ import {
 
 export default function extensionAppRouter(context: ExtensionContext) {
   context.subscriptions.push(
-    commands.registerCommand("react-tools.app-router.page", appRouter("page")),
-    commands.registerCommand("react-tools.app-router.route", appRouter("route"))
+    commands.registerCommand(
+      "vscode-templates-react.app-router.page",
+      appRouter("page")
+    ),
+    commands.registerCommand(
+      "vscode-templates-react.app-router.route",
+      appRouter("route")
+    )
   );
 }
 
