@@ -54,13 +54,10 @@ function appRouter(type: "route" | "page") {
       return;
     }
 
-    if (type === "page") {
-      await mkdir(componentDirPath, { recursive: true });
-      await mkdir(`${componentDirPath}/_components`);
-      await mkdir(`${componentDirPath}/_lib`);
+    await mkdir(componentDirPath, { recursive: true });
 
+    if (type === "page") {
       const pagePath = `${componentDirPath}/page.tsx`;
-      // should we share this with layout.tsx?
       const scssPath = `${componentDirPath}/page.module.scss`;
 
       await writeFile(pagePath, pageComponent(componentName));
@@ -71,9 +68,11 @@ function appRouter(type: "route" | "page") {
     }
 
     if (type === "route") {
-      await mkdir(componentDirPath, { recursive: true });
       const routePath = `${componentDirPath}/route.ts`;
+
       await writeFile(routePath, routeComponent());
+
+      await openFile(routePath, { viewColumn: ViewColumn.One });
       return;
     }
   };
