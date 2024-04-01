@@ -7,13 +7,7 @@ import {
   commands,
 } from "vscode";
 import { writeFile } from "fs/promises";
-import {
-  kebabCaseRegex,
-  openFile,
-  toLowerCamelCase,
-  toUpperCamelCase,
-  upperCamelCaseRegex,
-} from "./utilities";
+import { openFile, toLowerCamelCase, upperCamelCaseRegex } from "./utilities";
 
 export default function extensionReactComponent(context: ExtensionContext) {
   context.subscriptions.push(

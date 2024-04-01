@@ -27,12 +27,12 @@
         "title": "React: Component + SCSS"
       },
       {
-        "command": "vscode-templates-react.newReactListReducerContext",
-        "title": "React: List Reducer Context"
+        "command": "vscode-templates-react.react-context.props",
+        "title": "React Context: Props"
       },
       {
-        "command": "vscode-templates-react.newReactStateContext",
-        "title": "React: State Context"
+        "command": "vscode-templates-react.react-context.props-and-setter",
+        "title": "React Context: Props and Setter"
       },
       {
         "command": "vscode-templates-react.app-router.page",
@@ -60,12 +60,12 @@
           "group": "1_react@2"
         },
         {
-          "command": "vscode-templates-react.newReactListReducerContext",
-          "group": "1_react@3"
+          "command": "vscode-templates-react.react-context.props",
+          "group": "2_reactContext@1"
         },
         {
-          "command": "vscode-templates-react.newReactStateContext",
-          "group": "1_react@4"
+          "command": "vscode-templates-react.react-context.props-and-setter",
+          "group": "2_reactContext@2"
         },
         {
           "command": "vscode-templates-react.app-router.page",
@@ -95,11 +95,11 @@
           "when": "false"
         },
         {
-          "command": "vscode-templates-react.newReactListReducerContext",
+          "command": "vscode-templates-react.react-context.props",
           "when": "false"
         },
         {
-          "command": "vscode-templates-react.newReactStateContext",
+          "command": "vscode-templates-react.react-context.props-and-setter",
           "when": "false"
         },
         {
@@ -119,11 +119,6 @@
           "type": "boolean",
           "default": false,
           "description": "Disable NextJS App Router templates"
-        },
-        "vscode-templates-react.disablePageRouter": {
-          "type": "boolean",
-          "default": false,
-          "description": "Disable NextJS Page Router templates"
         }
       }
     }
