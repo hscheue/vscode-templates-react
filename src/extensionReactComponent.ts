@@ -68,7 +68,6 @@ function reactComponent(type: "component" | "component-scss") {
       await writeFile(tsxPath, reactScssTemplate(name));
       await writeFile(scssPath, scssTemplate(name));
       await openFile(tsxPath, { viewColumn: ViewColumn.One });
-      await openFile(scssPath, { viewColumn: ViewColumn.Two });
       return;
     }
   };

@@ -67,7 +67,6 @@ function appRouter(type: "route" | "page") {
       await writeFile(scssPath, scssModule(componentName));
 
       await openFile(pagePath, { viewColumn: ViewColumn.One });
-      await openFile(scssPath, { viewColumn: ViewColumn.Two });
       return;
     }
 
