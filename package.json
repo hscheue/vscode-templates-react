@@ -35,14 +35,6 @@
         "title": "React: State Context"
       },
       {
-        "command": "vscode-templates-react.newNextJsPage",
-        "title": "Pages Router: Page"
-      },
-      {
-        "command": "vscode-templates-react.newNextJsApi",
-        "title": "Page Router: API Route"
-      },
-      {
         "command": "vscode-templates-react.app-router.page",
         "title": "App Router: Route Module"
       },
@@ -74,16 +66,6 @@
         {
           "command": "vscode-templates-react.newReactStateContext",
           "group": "1_react@4"
-        },
-        {
-          "command": "vscode-templates-react.newNextJsPage",
-          "group": "2_nextjsPageRouter@1",
-          "when": "config.vscode-templates-react.disablePageRouter != true"
-        },
-        {
-          "command": "vscode-templates-react.newNextJsApi",
-          "group": "2_nextjsPageRouter@2",
-          "when": "config.vscode-templates-react.disablePageRouter != true"
         },
         {
           "command": "vscode-templates-react.app-router.page",
@@ -118,14 +100,6 @@
         },
         {
           "command": "vscode-templates-react.newReactStateContext",
-          "when": "false"
-        },
-        {
-          "command": "vscode-templates-react.newNextJsPage",
-          "when": "false"
-        },
-        {
-          "command": "vscode-templates-react.newNextJsApi",
           "when": "false"
         },
         {
