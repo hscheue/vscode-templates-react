@@ -93,6 +93,8 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   return NextResponse.json({ body });
 }
+
+export const dynamic = 'force-dynamic';
 `;
 
 const pageComponent = (name: string) =>
