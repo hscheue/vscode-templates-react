@@ -1,0 +1,20 @@
+name: CI
+
+on: workflow_call
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm run ci
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VSIX
+          path: vscode-templates-react-0.0.1.vsix
+          retention-days: 30

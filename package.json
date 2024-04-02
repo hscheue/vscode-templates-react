@@ -133,6 +133,7 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
+    "ci": "(npm ci); (npm run package); (npx @vscode/vsce package)",
     "update": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.vscode-templates-react); (code --install-extension vscode-templates-react-0.0.1.vsix)",
     "update:first": "(npm install); (npm run package); (npx @vscode/vsce package); (code --uninstall-extension undefined_publisher.vscode-templates-react); (code --install-extension vscode-templates-react-0.0.1.vsix)"
   },
