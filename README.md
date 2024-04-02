@@ -1,7 +1,8 @@
 # vscode-templates-react
 
-Getting started guide https://code.visualstudio.com/api/get-started/your-first-extension
+A set of react, scss, and next.js templates I use for both work and personal projects
 
-## Build and Install Extension
+## Installation
 
-npm run update
+1. Download `vscode-templates-react-*.vsix` from assets section of [latest release](https://github.com/hscheue/vscode-templates-react/releases).
+2. Install with `code --install-extension <path-to-vsix-file>`.
