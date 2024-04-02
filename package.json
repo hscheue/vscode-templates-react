@@ -35,6 +35,14 @@
         "title": "React Context: Props and Setter"
       },
       {
+        "command": "vscode-templates-react.react-reducer.simple",
+        "title": "React Reducer: Simple"
+      },
+      {
+        "command": "vscode-templates-react.react-reducer.list",
+        "title": "React Reducer: List"
+      },
+      {
         "command": "vscode-templates-react.next-js.page",
         "title": "NextJS: Page"
       },
@@ -68,13 +76,21 @@
           "group": "2_reactContext@2"
         },
         {
+          "command": "vscode-templates-react.react-reducer.simple",
+          "group": "3_reactReducer@1"
+        },
+        {
+          "command": "vscode-templates-react.react-reducer.list",
+          "group": "3_reactReducer@2"
+        },
+        {
           "command": "vscode-templates-react.next-js.page",
-          "group": "3_nextjs@1",
+          "group": "4_nextjs@1",
           "when": "config.vscode-templates-react.disableNextJS != true"
         },
         {
           "command": "vscode-templates-react.next-js.route",
-          "group": "3_nextjs@2",
+          "group": "4_nextjs@2",
           "when": "config.vscode-templates-react.disableNextJS != true"
         }
       ],
@@ -100,6 +116,14 @@
         },
         {
           "command": "vscode-templates-react.react-context.props-and-setter",
+          "when": "false"
+        },
+        {
+          "command": "vscode-templates-react.react-reducer.simple",
+          "when": "false"
+        },
+        {
+          "command": "vscode-templates-react.react-reducer.list",
           "when": "false"
         },
         {
