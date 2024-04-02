@@ -35,12 +35,12 @@
         "title": "React Context: Props and Setter"
       },
       {
-        "command": "vscode-templates-react.app-router.page",
-        "title": "App Router: Route Module"
+        "command": "vscode-templates-react.next-js.page",
+        "title": "NextJS: Page"
       },
       {
-        "command": "vscode-templates-react.app-router.route",
-        "title": "App Router: API"
+        "command": "vscode-templates-react.next-js.route",
+        "title": "NextJS: Route (API)"
       }
     ],
     "submenus": [
@@ -68,14 +68,14 @@
           "group": "2_reactContext@2"
         },
         {
-          "command": "vscode-templates-react.app-router.page",
-          "group": "3_nextjsAppRouter@1",
-          "when": "config.vscode-templates-react.disableAppRouter != true"
+          "command": "vscode-templates-react.next-js.page",
+          "group": "3_nextjs@1",
+          "when": "config.vscode-templates-react.disableNextJS != true"
         },
         {
-          "command": "vscode-templates-react.app-router.route",
-          "group": "3_nextjsAppRouter@2",
-          "when": "config.vscode-templates-react-disableAppRouter != true"
+          "command": "vscode-templates-react.next-js.route",
+          "group": "3_nextjs@2",
+          "when": "config.vscode-templates-react.disableNextJS != true"
         }
       ],
       "explorer/context": [
@@ -103,22 +103,22 @@
           "when": "false"
         },
         {
-          "command": "vscode-templates-react.app-router.page",
+          "command": "vscode-templates-react.next-js.page",
           "when": "false"
         },
         {
-          "command": "vscode-templates-react.app-router.route",
+          "command": "vscode-templates-react.next-js.route",
           "when": "false"
         }
       ]
     },
     "configuration": {
-      "title": "React Tools Settings",
+      "title": "React Template Settings",
       "properties": {
-        "vscode-templates-react.disableAppRouter": {
+        "vscode-templates-react.disableNextJS": {
           "type": "boolean",
           "default": false,
-          "description": "Disable NextJS App Router templates"
+          "description": "Disable NextJS templates"
         }
       }
     }

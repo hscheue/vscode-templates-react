@@ -15,20 +15,20 @@ import {
   toLowerCamelCase,
 } from "./utilities";
 
-export default function extensionAppRouter(context: ExtensionContext) {
+export default function extensionNextJS(context: ExtensionContext) {
   context.subscriptions.push(
     commands.registerCommand(
-      "vscode-templates-react.app-router.page",
-      appRouter("page")
+      "vscode-templates-react.next-js.page",
+      nextJS("page")
     ),
     commands.registerCommand(
-      "vscode-templates-react.app-router.route",
-      appRouter("route")
+      "vscode-templates-react.next-js.route",
+      nextJS("route")
     )
   );
 }
 
-function appRouter(type: "route" | "page") {
+function nextJS(type: "route" | "page") {
   return async (uri: Uri | undefined) => {
     if (!uri) {
       window.showErrorMessage("command only for use in context menu");
