@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hscheuerle/vscode-templates-react.git"
+    "url": "https://github.com/hscheue/vscode-templates-react.git"
   },
   "engines": {
     "vscode": "^1.78.0"
