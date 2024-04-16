@@ -4,6 +4,7 @@
   "description": "templates for react development",
   "version": "0.0.1",
   "license": "MIT",
+  "publisher": "hscheue",
   "repository": {
     "type": "git",
     "url": "https://github.com/hscheue/vscode-templates-react.git"
