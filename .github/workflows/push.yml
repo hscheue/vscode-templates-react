@@ -1,0 +1,30 @@
+name: Push VSCE
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: |
+          npm install -g @vscode/vsce
+          npm install
+          npm run compile
+      - run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          vsce publish patch --pre-release --pat $VSCODE_MARKETPLACE_TOKEN
+        env:
+          VSCODE_MARKETPLACE_TOKEN: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+      - run: |
+          git push https://${GH_PAT}@github.com/${{ github.repository }}.git HEAD:main
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
