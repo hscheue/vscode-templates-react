@@ -2,7 +2,7 @@
   "name": "vscode-templates-react",
   "displayName": "vscode-templates-react",
   "description": "templates for react development",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "publisher": "hscheue",
   "repository": {
