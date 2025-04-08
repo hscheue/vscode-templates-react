@@ -76,31 +76,28 @@ function propsContext(name: string) {
   const lower = toLowerCamelCase(upper);
 
   return `import {
-      createContext,
-      useContext,
-      useState,
-      type Dispatch,
-      type PropsWithChildren,
-      type SetStateAction,
-    } from 'react';
-    
-    export type ${upper}State = Record<string | number, unknown>;
-    
-    const ${upper}Context = createContext<${upper}State | null>(null);
-    
-    export function ${upper}Provider({ children }: PropsWithChildren<{ state: ${upper}State }>) {    
-      return (
-        <${upper}Context.Provider value={${lower}}>
-          {children}
-        </${upper}Context.Provider>
-      );
-    }
-    
-    export function use${upper}(): ${upper} {
-      const context = useContext(${upper}Context);
-      if (!context) throw Error('Missing Provider: ${upper}Provider');
-      return context;
-    }
+  createContext,
+  useContext,
+  type PropsWithChildren,
+} from 'react';
+
+export type ${upper}State = Record<string | number, unknown>;
+
+const ${upper}Context = createContext<${upper}State | null>(null);
+
+export function ${upper}Provider({ ${lower}, children }: PropsWithChildren<{ ${lower}: ${upper}State }>) {    
+  return (
+    <${upper}Context.Provider value={${lower}}>
+      {children}
+    </${upper}Context.Provider>
+  );
+}
+
+export function use${upper}(): ${upper}State {
+  const context = useContext(${upper}Context);
+  if (!context) throw Error('Missing Provider: ${upper}Provider');
+  return context;
+}
     `;
 }
 
