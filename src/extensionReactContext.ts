@@ -81,11 +81,11 @@ function propsContext(name: string) {
   type PropsWithChildren,
 } from 'react';
 
-export type ${upper}State = Record<string | number, unknown>;
+export type ${upper} = Record<string | number, unknown>;
 
-const ${upper}Context = createContext<${upper}State | null>(null);
+const ${upper}Context = createContext<${upper} | null>(null);
 
-export function ${upper}Provider({ ${lower}, children }: PropsWithChildren<{ ${lower}: ${upper}State }>) {    
+export function ${upper}Provider({ ${lower}, children }: PropsWithChildren<{ ${lower}: ${upper} }>) {    
   return (
     <${upper}Context.Provider value={${lower}}>
       {children}
@@ -93,7 +93,7 @@ export function ${upper}Provider({ ${lower}, children }: PropsWithChildren<{ ${l
   );
 }
 
-export function use${upper}(): ${upper}State {
+export function use${upper}(): ${upper} {
   const context = useContext(${upper}Context);
   if (!context) throw Error('Missing Provider: ${upper}Provider');
   return context;
