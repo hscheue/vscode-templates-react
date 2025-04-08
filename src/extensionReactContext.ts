@@ -98,7 +98,7 @@ export function use${upper}(): ${upper} {
   if (!context) throw Error('Missing Provider: ${upper}Provider');
   return context;
 }
-    `;
+`;
 }
 
 function propsAndSetterContext(name: string) {
@@ -106,46 +106,46 @@ function propsAndSetterContext(name: string) {
   const lower = toLowerCamelCase(upper);
 
   return `import {
-    createContext,
-    useContext,
-    useState,
-    type Dispatch,
-    type PropsWithChildren,
-    type SetStateAction,
-  } from 'react';
-  
-  export type ${upper} = Record<string | number, unknown>;
-  
-  const ${upper}Context = createContext<${upper} | null>(null);
-  
-  const ${upper}SetStateContext = createContext<Dispatch<
-    SetStateAction<${upper}>
-  > | null>(null);
-  
-  export function ${upper}Provider({ children }: PropsWithChildren) {
-    const [${lower}, set${upper}] = useState<${upper}>({});
-  
-    return (
-      <${upper}Context.Provider value={${lower}}>
-        <${upper}SetStateContext.Provider value={set${upper}}>
-          {children}
-        </${upper}SetStateContext.Provider>
-      </${upper}Context.Provider>
-    );
-  }
-  
-  export function use${upper}(): ${upper} {
-    const context = useContext(${upper}Context);
-    if (!context) throw Error('Missing Provider: ${upper}Provider');
-    return context;
-  }
-  
-  export function use${upper}SetState(): Dispatch<SetStateAction<${upper}>> {
-    const context = useContext(${upper}SetStateContext);
-    if (context === null) throw Error('Missing Provider: ${upper}Provider');
-    return context;
-  }
-  `;
+  createContext,
+  useContext,
+  useState,
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
+} from 'react';
+
+export type ${upper} = Record<string | number, unknown>;
+
+const ${upper}Context = createContext<${upper} | null>(null);
+
+const ${upper}SetStateContext = createContext<Dispatch<
+  SetStateAction<${upper}>
+> | null>(null);
+
+export function ${upper}Provider({ children }: PropsWithChildren) {
+  const [${lower}, set${upper}] = useState<${upper}>({});
+
+  return (
+    <${upper}Context.Provider value={${lower}}>
+      <${upper}SetStateContext.Provider value={set${upper}}>
+        {children}
+      </${upper}SetStateContext.Provider>
+    </${upper}Context.Provider>
+  );
+}
+
+export function use${upper}(): ${upper} {
+  const context = useContext(${upper}Context);
+  if (!context) throw Error('Missing Provider: ${upper}Provider');
+  return context;
+}
+
+export function use${upper}SetState(): Dispatch<SetStateAction<${upper}>> {
+  const context = useContext(${upper}SetStateContext);
+  if (context === null) throw Error('Missing Provider: ${upper}Provider');
+  return context;
+}
+`;
 }
 
 function toLowerCamelCase(input: string): string {
