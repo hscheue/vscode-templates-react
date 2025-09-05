@@ -92,7 +92,12 @@ export const dynamic = 'force-dynamic';
 const pageComponent = (name: string) =>
   `import { Metadata } from 'next';
 
-export default async function ${toUpperCamelCase(name)}() {
+export default async function ${toUpperCamelCase(name)}(
+  props: PageProps<''>,
+) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
   return (
     <div>
       <h1>${toUpperCamelCase(name)}</h1>
