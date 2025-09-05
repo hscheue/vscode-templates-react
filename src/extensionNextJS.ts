@@ -90,7 +90,7 @@ export const dynamic = 'force-dynamic';
 `;
 
 const pageComponent = (name: string) =>
-  `
+  `import { Metadata } from 'next';
 
 export default async function ${toUpperCamelCase(name)}() {
   return (
@@ -99,6 +99,14 @@ export default async function ${toUpperCamelCase(name)}() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: '',
+  description: '',
+  alternates: {
+    canonical: '',
+  },
+};
 `;
 
 /**
