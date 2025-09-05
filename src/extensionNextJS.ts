@@ -67,7 +67,7 @@ function nextJS(type: "route" | "page") {
     if (type === "route") {
       const routePath = `${componentDirPath}/route.ts`;
 
-      await writeFile(routePath, routeComponent());
+      await writeFile(routePath, routeComponent(propsPath));
 
       await openFile(routePath, { viewColumn: ViewColumn.One });
       return;
@@ -76,16 +76,27 @@ function nextJS(type: "route" | "page") {
 }
 
 // TODO: convert [dynamic] segments into second argument { params }: { params?: { segment?: boolean } }
-const routeComponent =
-  () => `import { type NextRequest, NextResponse } from 'next/server';
+const routeComponent = (
+  propsPath: string
+) => `import { type NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET(
+  request: NextRequest,
+  props: RouteContext<'${propsPath}'>,
+) {
+  const params = await props.params;
+
   return NextResponse.json({
     basePath: request.nextUrl.searchParams.toString(),
   });
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest,
+  props: RouteContext<''>,
+) {
+  const params = await props.params;
+
   const body = await request.json();
   return NextResponse.json({ body });
 }
