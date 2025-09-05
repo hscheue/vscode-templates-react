@@ -41,8 +41,12 @@ function nextJS(type: "route" | "page") {
     }
 
     const { fsPath } = uri;
-    const componentDirPath = `${fsPath}/${name}`;
+
     const componentName = name.split("/").at(-1);
+    const componentDirPath = `${fsPath}/${name}`;
+    const propsPath = componentDirPath
+      .split("app", 2)?.[1]
+      .replace(/\/\(.*\)/g, "");
 
     if (!componentName) {
       window.showErrorMessage("last segment missing");
@@ -54,7 +58,7 @@ function nextJS(type: "route" | "page") {
     if (type === "page") {
       const pagePath = `${componentDirPath}/page.tsx`;
 
-      await writeFile(pagePath, pageComponent(componentName));
+      await writeFile(pagePath, pageComponent(componentName, propsPath));
 
       await openFile(pagePath, { viewColumn: ViewColumn.One });
       return;
@@ -89,11 +93,11 @@ export async function POST(request: NextRequest) {
 export const dynamic = 'force-dynamic';
 `;
 
-const pageComponent = (name: string) =>
+const pageComponent = (name: string, propsPath: string) =>
   `import { Metadata } from 'next';
 
 export default async function ${toUpperCamelCase(name)}(
-  props: PageProps<''>,
+  props: PageProps<'${propsPath}'>,
 ) {
   const params = await props.params;
   const searchParams = await props.searchParams;
