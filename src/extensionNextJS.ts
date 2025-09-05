@@ -8,12 +8,7 @@ import {
   window,
 } from "vscode";
 import { mkdir, writeFile } from "fs/promises";
-import {
-  kebabCaseRegex,
-  openFile,
-  toUpperCamelCase,
-  toLowerCamelCase,
-} from "./utilities";
+import { kebabCaseRegex, openFile, toUpperCamelCase } from "./utilities";
 
 export default function extensionNextJS(context: ExtensionContext) {
   context.subscriptions.push(
@@ -58,10 +53,8 @@ function nextJS(type: "route" | "page") {
 
     if (type === "page") {
       const pagePath = `${componentDirPath}/page.tsx`;
-      const scssPath = `${componentDirPath}/page.module.scss`;
 
       await writeFile(pagePath, pageComponent(componentName));
-      await writeFile(scssPath, scssModule(componentName));
 
       await openFile(pagePath, { viewColumn: ViewColumn.One });
       return;
@@ -97,20 +90,14 @@ export const dynamic = 'force-dynamic';
 `;
 
 const pageComponent = (name: string) =>
-  `import styles from './page.module.scss';
+  `
 
 export default async function ${toUpperCamelCase(name)}() {
   return (
-    <div className={styles.${toLowerCamelCase(toUpperCamelCase(name))}}>
+    <div>
       <h1>${toUpperCamelCase(name)}</h1>
     </div>
   );
-}
-`;
-
-const scssModule = (name: string) =>
-  `.${toLowerCamelCase(toUpperCamelCase(name))} { 
-  color: inherit; 
 }
 `;
 
