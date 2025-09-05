@@ -8,12 +8,7 @@ import {
   window,
 } from "vscode";
 import { mkdir, writeFile } from "fs/promises";
-import {
-  kebabCaseRegex,
-  openFile,
-  toUpperCamelCase,
-  toLowerCamelCase,
-} from "./utilities";
+import { kebabCaseRegex, openFile, toUpperCamelCase } from "./utilities";
 
 export default function extensionNextJS(context: ExtensionContext) {
   context.subscriptions.push(
@@ -46,8 +41,12 @@ function nextJS(type: "route" | "page") {
     }
 
     const { fsPath } = uri;
-    const componentDirPath = `${fsPath}/${name}`;
+
     const componentName = name.split("/").at(-1);
+    const componentDirPath = `${fsPath}/${name}`;
+    const propsPath = componentDirPath
+      .split("app", 2)?.[1]
+      .replace(/\/\(.*\)/g, "");
 
     if (!componentName) {
       window.showErrorMessage("last segment missing");
@@ -58,10 +57,8 @@ function nextJS(type: "route" | "page") {
 
     if (type === "page") {
       const pagePath = `${componentDirPath}/page.tsx`;
-      const scssPath = `${componentDirPath}/page.module.scss`;
 
-      await writeFile(pagePath, pageComponent(componentName));
-      await writeFile(scssPath, scssModule(componentName));
+      await writeFile(pagePath, pageComponent(componentName, propsPath));
 
       await openFile(pagePath, { viewColumn: ViewColumn.One });
       return;
@@ -70,7 +67,7 @@ function nextJS(type: "route" | "page") {
     if (type === "route") {
       const routePath = `${componentDirPath}/route.ts`;
 
-      await writeFile(routePath, routeComponent());
+      await writeFile(routePath, routeComponent(propsPath));
 
       await openFile(routePath, { viewColumn: ViewColumn.One });
       return;
@@ -79,16 +76,27 @@ function nextJS(type: "route" | "page") {
 }
 
 // TODO: convert [dynamic] segments into second argument { params }: { params?: { segment?: boolean } }
-const routeComponent =
-  () => `import { type NextRequest, NextResponse } from 'next/server';
+const routeComponent = (
+  propsPath: string
+) => `import { type NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET(
+  request: NextRequest,
+  props: RouteContext<'${propsPath}'>,
+) {
+  const params = await props.params;
+
   return NextResponse.json({
     basePath: request.nextUrl.searchParams.toString(),
   });
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest,
+  props: RouteContext<''>,
+) {
+  const params = await props.params;
+
   const body = await request.json();
   return NextResponse.json({ body });
 }
@@ -96,22 +104,29 @@ export async function POST(request: NextRequest) {
 export const dynamic = 'force-dynamic';
 `;
 
-const pageComponent = (name: string) =>
-  `import styles from './page.module.scss';
+const pageComponent = (name: string, propsPath: string) =>
+  `import { Metadata } from 'next';
 
-export default async function ${toUpperCamelCase(name)}() {
+export default async function ${toUpperCamelCase(name)}(
+  props: PageProps<'${propsPath}'>,
+) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
   return (
-    <div className={styles.${toLowerCamelCase(toUpperCamelCase(name))}}>
+    <div>
       <h1>${toUpperCamelCase(name)}</h1>
     </div>
   );
 }
-`;
 
-const scssModule = (name: string) =>
-  `.${toLowerCamelCase(toUpperCamelCase(name))} { 
-  color: inherit; 
-}
+export const metadata: Metadata = {
+  title: '',
+  description: '',
+  alternates: {
+    canonical: '',
+  },
+};
 `;
 
 /**
