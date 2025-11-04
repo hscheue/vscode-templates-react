@@ -93,7 +93,7 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  props: RouteContext<''>,
+  props: RouteContext<'${propsPath}'>,
 ) {
   const params = await props.params;
 
